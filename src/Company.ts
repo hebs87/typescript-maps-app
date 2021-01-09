@@ -1,6 +1,8 @@
 import * as faker from 'faker';
+import { Mappable } from "./CustomMap";
 
-export class Company {
+// Implementing the Mappable interface tells TS that the class should contain all the properties required by Mappable
+export class Company implements Mappable {
   name: string;
   catchPhrase: string;
   location: {

@@ -1,6 +1,8 @@
 import * as faker from 'faker';
+import { Mappable } from "./CustomMap";
 
-export class User {
+// Implementing the Mappable interface tells TS that the class should contain all the properties required by Mappable
+export class User implements Mappable {
   name: string;
   location: {
     lat: number;
