@@ -5,7 +5,7 @@ export class User {
   location: {
     lat: number;
     lng: number;
-  }
+  };
 
   constructor() {
     // Initialise properties with randomly generated values
@@ -14,5 +14,13 @@ export class User {
       lat: parseFloat(faker.address.latitude()),
       lng: parseFloat(faker.address.longitude())
     }
-  }
+  };
+
+  markerContent = (): string => {
+    return `
+      <div>
+        <h1>User Name: ${this.name}</h1>
+      </div>
+    `;
+  };
 }

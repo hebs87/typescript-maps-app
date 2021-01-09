@@ -6,6 +6,8 @@ interface Mappable {
     lat: number;
     lng: number;
   };
+  // We also have to have a function that returns a string with the popup content each time it is called
+  markerContent: () => string;
 }
 
 export class CustomMap {
@@ -39,7 +41,7 @@ export class CustomMap {
     marker.addListener('click', () => {
       // Create the instance of the InfoWindow
       const infoWindow = new google.maps.InfoWindow({
-        content: 'Hi there!'
+        content: mappable.markerContent()
       })
 
       // Open it and pass in the map and marker instances
