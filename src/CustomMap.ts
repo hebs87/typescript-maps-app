@@ -27,12 +27,23 @@ export class CustomMap {
   }
 
   addMarker = (mappable: Mappable): void => {
-    new google.maps.Marker({
+    const marker = new google.maps.Marker({
       map: this.googleMap,
       position: {
         lat: mappable.location.lat,
         lng: mappable.location.lng
       }
     });
+
+    // Add an event listener to show a pop up when the marker is clicked
+    marker.addListener('click', () => {
+      // Create the instance of the InfoWindow
+      const infoWindow = new google.maps.InfoWindow({
+        content: 'Hi there!'
+      })
+
+      // Open it and pass in the map and marker instances
+      infoWindow.open(this.googleMap, marker);
+    })
   }
 }
